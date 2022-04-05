@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Temperature Converter</title>
+    <!-- Css  -->
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      .container {
+        background: rgb(185, 218, 194);
+        color: rgb(77, 38, 184);
+        text-align: center;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+
+      .input-div {
+        display: inline-block;
+        margin: 0px 10px;
+        font-size: 1.4rem;
+        font-family: "Courier New", Courier, monospace;
+        font-weight: bold;
+      }
+
+      .inp {
+        padding: 10px;
+        margin-top: 10px;
+        text-align: center;
+        font-size: 1.4rem;
+        font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+        outline: none;
+        border-radius: 10px;
+        border: 5px solid #a86ce7;
+      }
+
+      input[type="number"]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+      }
+
+      input[type="number"]:focus {
+        border: 5px solid #8842d5;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Temperature Converter</h1>
+      <div class="input-div">
+        <label>Celsius</label> <br />
+        <input type="number" value="0" id="cel" class="inp" />
+      </div>
+      <div class="input-div">
+        <label>Fahrenheit</label> <br />
+        <input type="number" value="32" id="fah" class="inp" />
+      </div>
+    </div>
+
+    <script>
+      var c = document.getElementById("cel");
+      var f = document.getElementById("fah");
+
+      c.addEventListener("input", function () {
+        let cels = this.value;
+        let fahr = (cels * 9) / 5 + 32;
+        if (!Number.isInteger(fahr)) {
+          fahr = fahr.toFixed(4);
+        }
+        f.value = fahr;
+      });
+
+      f.addEventListener("input", function () {
+        let fahr = this.value;
+        let cels = ((fahr - 32) * 5) / 9;
+        if (!Number.isInteger(cels)) {
+          cels = cels.toFixed(4);
+        }
+        c.value = cels;
+      });
+    </script>
+  </body>
+</html>
